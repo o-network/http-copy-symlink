@@ -4,7 +4,7 @@ The intention of this module is to provide support for the `COPY` command to hel
 
 To allow for clean user experience, we sometimes require very quick operations to allow for instant user interaction, one type of application implementation that will be seen built on top of Solid is to define state machines by utilising the powerful graphing ability of [RDF](https://github.com/solid/solid-spec/blob/master/content-representation.md) and [FaaS](https://www.openfaas.com/). 
 
-To achieve a quick response time we will need a way to offload `COPY` requests to a backing service, but we also need to be able to make the resources available from our service. 
+To achieve a quick response time we could define a way to offload `COPY` requests to a backing service, but we will also need to be able to make the resources available from our service immediately if requested.
 
 There are different levels of acceptable outcomes for a `COPY` request, here's a quick list of use cases we will cover:
 
@@ -13,7 +13,7 @@ There are different levels of acceptable outcomes for a `COPY` request, here's a
 
 Above, we have defined an entry point for a new set of rules, what a _cloning scheme_ is. We want to seperate this concern as agents that have different requirements will require different ways to clone information. 
 
-An example of a cloning scheme is:
+## Example Copy Scheme
 
 `COPY`:
 
@@ -40,5 +40,13 @@ An example of a cloning scheme is:
 5. If `GET` response is not `Downloaded`, return
 6. Service will make a `COPY` request to `${Target URI}` with header `Source: ${Pointer URI}`, service requires the resource to be cloned immediately
 7. Service will delete the location described in `${Target URI}.meta`
+
+## Why would this be useful?
+
+- Cloning sets of information from a remote service to a local trusted space, for example if you wanted to browse the internet offline and already know what set of information you'll be using. 
+- Cloning state machines defined in RDF graphs
+- Cloning resources defined within a graph, this could be a full website definiton with backing state machines or defined dependent resources (for example by way of a [Ansible](https://www.ansible.com/) or [Pupet](https://puppet.com/solutions/infrastructure-as-code), or a set of hyperlinked HTML documents
+- Cloning documents between personal storage services
+- Providing a common strategy whether the primary service is local to the agent, or on remote infrastructure
  
 
