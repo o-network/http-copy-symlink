@@ -1,0 +1,33 @@
+{
+  "name": "@opennetwork/http-copy-symlink",
+  "version": "1.0.0",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc --declaration && npm run tslint",
+    "watch": "tsc -w",
+    "tslint": "tslint -c tslint.json -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "peerDependencies": {
+    "@opennetwork/http-representation": "^2.0.24",
+    "@opennetwork/http-store": "^3.0.4"
+  },
+  "dependencies": {
+    "node-fetch": "^2.3.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/o-network/http-rdf.git"
+  },
+  "devDependencies": {
+    "@opennetwork/http-representation": "^2.0.24",
+    "@opennetwork/http-store": "^3.0.4",
+    "@opennetwork/web-access-control": "^3.0.3",
+    "@types/node": "^11.13.4",
+    "@types/rdflib": "^0.17.1",
+    "tslint": "^5.16.0",
+    "typescript": "^3.4.3"
+  }
+}
